@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
 
   def index
     # flash[:notice] = "午安～您好！"
