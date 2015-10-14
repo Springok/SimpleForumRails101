@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     # flash[:notice] = "午安～您好！"
@@ -15,7 +15,7 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def show
-    @group = current_user.groups.find(params[:id])
+    @group = Group.find(params[:id])
     @posts = @group.posts
 
   end
@@ -29,6 +29,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
     if @group.save
       redirect_to groups_path, notice: "新增討論板成功"
+      current_user.join!(@group)
     else
       render :new
     end
@@ -51,6 +52,30 @@ before_action :authenticate_user!, except: [:index, :show]
     @group = current_user.groups.find(params[:id])
     @group.destroy
     redirect_to groups_path, alert: "討論板已刪除"
+  end
+
+  def join
+    @group = Group.find(params[:id])
+
+    if current_user.is_member_of?(@group)
+      flash[:notice] = "您已經是本討論版的成員了喔～"
+    else
+      current_user.join!(@group)
+      flash[:notice] = "歡迎加入！"
+    end
+    redirect_to group_path(@group)
+  end
+
+  def quit
+    @group = Group.find(params[:id])
+
+    if current_user.is_member_of?(@group)
+      flash[:notice] = "退出討論版成功～"
+      current_user.quit!(@group)
+    else
+      flash[:notice] = "您並非本討論版的成員啊～無法退出"
+    end
+    redirect_to group_path(@group)
   end
 
   private
