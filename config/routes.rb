@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       post :quit
       post :join
     end
+    resources :posts
+  end
 
+  namespace :account do
+    resources :groups
     resources :posts
   end
 
