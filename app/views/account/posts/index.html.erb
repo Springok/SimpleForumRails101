@@ -15,8 +15,8 @@
       <tr>
         <td>#</td>
         <td><%= link_to(post.group.title, group_path(post.group) ) %></td>
-        <td><%= post.context %></td>
-        <td><%= post.created_at %></td>
+        <td><%= simple_format(post.context) %></td>
+        <td><%= post.created_at.to_s(:short) %></td>
       </tr>
       <% end %>
     </tbody>
