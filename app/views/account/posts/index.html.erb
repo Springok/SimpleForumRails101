@@ -15,7 +15,7 @@
       <tr>
         <td>#</td>
         <td><%= link_to(post.group.title, group_path(post.group) ) %></td>
-        <td><%= simple_format(post.context) %></td>
+        <td><%= render_post_content(post) %></td>
         <td><%= post.created_at.to_s(:short) %></td>
       </tr>
       <% end %>
