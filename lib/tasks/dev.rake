@@ -1,5 +1,5 @@
 namespace :dev do
-  desc: "Rebuild system"
+  desc:"Rebuild system"
   task :build => ["tmp:clear", "log:clear", "db:drop", "db:create", "db:migrate"]
   task :build => ["dev:build", "db:seed"]
 end
