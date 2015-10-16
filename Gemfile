@@ -35,6 +35,9 @@ gem 'faker', '~> 1.5.0', :group => :development
 
 gem 'omniauth-facebook'
 
+gem "rails-erd", :group => :development
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
