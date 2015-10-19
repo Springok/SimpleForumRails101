@@ -28,7 +28,7 @@
   - Ruby 2.2.2
   - Rails 4.2.3
 
-###[學習筆記連結](http://springok-blog.logdown.com/)
+###[學習筆記連結](http://springok-blog.logdown.com/posts/2015/10/14/rails101-views-model)
 
 ###[專案網站Demo連結](https://simple-forum-rails101.herokuapp.com/)
 
